@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Numeros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <br>
+    <div class="container col-7 mx-auto flex justify-center text-center" style="background-color: rgb(154, 57, 245);">
+        <div>
+            <br>
+            <h1 class="text-info" >Welcome to the Great Number Game!</h1>
+            <br>
+            <h4 class="text-warning">I am thinking of a number between 1 and 100</h4>
+            <br>
+            <h4>Take a guess</h4>
+            <br>
+
+            <center>
+                {% if adivina != None: %}
+
+                    {% if adivina > random: %}
+                        <div class="border border-dark bg-danger d-flex align-items-center justify-content-evenly fw-bold" style="width: 150px; height: 150px;"> 
+                            <p>Too high!</p>  
+                        </div>  
+                    {% endif %}
+
+
+                    {% if adivina < random: %}
+                        <div class="border border-dark bg-danger d-flex align-items-center justify-content-center fw-bold" style="width: 150px; height: 150px;"> 
+                            <p>Too low!</p>  
+                        </div>  
+                    {% endif %}
+
+
+                    {% if adivina == random: %}
+                        <div class="border border-dark bg-success d-flex align-items-center justify-content-center fw-bold" style="width: 150px; height: 150px;"> 
+                            <p>YOU WIN!</p>
+                        </div>  
+                    {% endif %}
+
+                {% endif %}
+            </center>
+        </div>        
+
+        <form action="/adivinar" method="POST" id="adivina" name="adivina">
+            <label for="number">Enter a number</label>
+            <input class="form-control mt-3 mx-auto" type="number" style="width: 400px;" id="adivina" name="adivina">
+            <br>
+            <button class="btn btn-success" type="submit" id="adivina" name="adivina" >Submit</button>
+            <a class="btn btn-danger" href="/reset">Play again!</a>
+        </form>
+        <br>
+    
+    </div>
+</body>
+</html>
